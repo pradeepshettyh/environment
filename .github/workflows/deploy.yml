@@ -8,6 +8,7 @@ env:
   MONGODB_DB_NAME: sample_mflix
 jobs:
   test:
+    environment: qa
     env:
       MONGODB_CLUSTER_ADDRESS: ${{secrets.MONGODB_CLUSTER_ADDRESS}}
       MONGODB_USERNAME: pradeeps
