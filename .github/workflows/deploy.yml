@@ -9,9 +9,9 @@ env:
 jobs:
   test:
     env:
-      MONGODB_CLUSTER_ADDRESS: cluster0.o7l49.mongodb.net
+      MONGODB_CLUSTER_ADDRESS: ${{secrets.MONGODB_CLUSTER_ADDRESS}}
       MONGODB_USERNAME: pradeeps
-      MONGODB_PASSWORD: sXHanlodO1scgbdD
+      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
       PORT: 8080
     runs-on: ubuntu-latest
     steps:
@@ -32,11 +32,11 @@ jobs:
         run: |
           echo "PORT Number is $PORT"
           echo "cluster name ${{env.MONGODB_CLUSTER_ADDRESS}} "
+          echo "${{ vars.REPO_VAR1}} --->${{ vars.SAMPLE}} ----> ${{ secrets.REPO_XYZ}}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "cluster name ${{env.MONGODB_CLUSTER_ADDRESS}} "
-          echo "cluster name $MONGODB_CLUSTER_ADDRESS "
+          echo "cluster name $MONGODB_DB_NAME "
